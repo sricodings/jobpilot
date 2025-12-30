@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-950 text-navy-100 antialiased;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-navy-950;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-navy-700 rounded-full hover:bg-navy-600 transition-colors;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  @apply bg-navy-800/90 backdrop-blur-sm border border-navy-700;
+}
+
+.glass-hover {
+  @apply hover:bg-navy-700/50 transition-all duration-300;
+}
+
+/* Water Wave Effect */
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+.water-wave {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vmax;
+  height: 100vmax;
+  background: radial-gradient(circle, rgba(100, 255, 218, 0.4) 0%, rgba(100, 255, 218, 0) 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.water-wave.active {
+  animation: ripple 1.5s ease-out forwards;
+}
+
+.water-wave.disabled {
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.4) 0%, rgba(244, 63, 94, 0) 70%);
+  /* Rose color for off */
+}
